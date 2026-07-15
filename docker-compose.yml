@@ -1,0 +1,14 @@
+services:
+  postgres-dw:
+    image: postgres:16
+    container_name: datawarehouse
+    environment:
+      POSTGRES_USER: ${DW_USER}
+      POSTGRES_PASSWORD: ${DW_PASSWORD}
+      POSTGRES_DB: ${DW_DB}
+    ports:
+      - "${DW_PORT}:5432"
+    volumes:
+      - postgres_dw_data:/var/lib/postgresql/data
+volumes:
+  postgres_dw_data:
